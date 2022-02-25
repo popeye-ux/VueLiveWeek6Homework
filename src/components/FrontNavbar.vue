@@ -121,6 +121,7 @@ export default {
         .get(url)
         .then((res) => {
           // console.log(res)
+          // 取得購物車
           this.cartData = res.data.data
         })
         .catch((err) => {
