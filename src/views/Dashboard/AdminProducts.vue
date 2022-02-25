@@ -40,7 +40,7 @@
               type="button"
               class="btn btn-light btn-act"
               :class="item.is_enabled ? 'text-success' : 'text-danger'"
-              @click="item.is_enabled = !item.is_enabled"
+              @click="item.is_enabled = !item.is_enabled,updateProduct (item.id,item)"
             >
               {{ item.is_enabled ? "啟用" : "未啟用" }}
             </button>
@@ -115,13 +115,23 @@ export default {
   methods: {
     getData (page = 1) {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/products?page=${page}`
-
       this.$http
         .get(url)
         .then((response) => {
           const { products, pagination } = response.data
           this.products = products
           this.pagination = pagination
+        })
+        .catch((err) => {
+          alert(err.data.message)
+        })
+    },
+    updateProduct (id, item) {
+      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/product/${id}`
+      const http = 'put'
+      this.$http[http](url, { data: item })
+        .then((response) => {
+          alert(response.data.message)
         })
         .catch((err) => {
           alert(err.data.message)
