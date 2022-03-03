@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import 'bootstrap'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import CKEditor from '@ckeditor/ckeditor5-vue'
 // 匯入 vee-validate 主套件
 import {
   Field, Form, ErrorMessage, defineRule, configure
@@ -31,6 +32,7 @@ setLocale('zh_TW')
 const app = createApp(App)
 app.use(router)
 app.use(VueAxios, axios)
+app.use(CKEditor)
 // 註冊 vee-validate 三個全域元件
 app.component('Form', Form)
 app.component('Field', Field)

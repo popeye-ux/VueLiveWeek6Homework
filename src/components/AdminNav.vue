@@ -28,6 +28,9 @@
             <router-link to="/admin/coupon" class="nav-link">優惠券管理</router-link>
           </li>
           <li class="nav-item me-4">
+            <router-link to="/admin/article" class="nav-link">文章管理</router-link>
+          </li>
+          <li class="nav-item me-4">
             <a href="#" @click.prevent="signOut" class="nav-link">登出管理介面</a>
           </li>
         </ul>

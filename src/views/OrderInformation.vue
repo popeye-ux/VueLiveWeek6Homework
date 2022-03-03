@@ -77,7 +77,7 @@
               class="form-control"
               cols="30"
               rows="10"
-              v-model="form.user.message"
+              v-model="form.message"
             ></textarea>
           </div>
           <div class="text-end">
@@ -172,6 +172,7 @@ export default {
           this.isLoadingItem = ''
           this.getCart()
           this.$refs.form.resetForm()
+          this.form.message = ''
           emitter.emit('get-cart')
         })
         .catch(err => {

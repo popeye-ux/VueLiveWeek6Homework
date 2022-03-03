@@ -100,6 +100,7 @@
                   </div>
                 </div>
               </div>
+
               <hr />
               <div class="mb-3">
                 <div class="form-floating">
