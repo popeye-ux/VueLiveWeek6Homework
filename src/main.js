@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import 'bootstrap'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+// 匯入文章輸入介面
 import CKEditor from '@ckeditor/ckeditor5-vue'
 // 匯入 vee-validate 主套件
 import {

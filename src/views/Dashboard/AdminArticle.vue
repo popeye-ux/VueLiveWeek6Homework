@@ -3,7 +3,7 @@ const newLocal=getPosts()
   <h1 class="text-center">這是文章管理介面</h1>
   <div class="container">
        <div class="text-end mt-4">
-      <button class="btn btn-primary" type="button" @click="openModal(true)">
+      <button class="btn btn-primary" type="button" @click="openArticleModal(true)">
         建立新的頁面
       </button>
     </div>
@@ -41,7 +41,7 @@ const newLocal=getPosts()
           </td>
           <td>
             <div class="btn-group">
-              <button class="btn btn-outline-primary btn-sm" type="button">
+              <button class="btn btn-outline-primary btn-sm" type="button" @click="openArticleModal(false, item)">
                 編輯
               </button>
               <button class="btn btn-outline-danger btn-sm" type="button">
@@ -52,9 +52,16 @@ const newLocal=getPosts()
         </tr>
       </tbody>
     </table>
+    <post-modal
+      :article="tempArticle"
+      :is-new="isNew"
+      ref="postModal"
+      @update-article="getPosts"
+    ></post-modal>
   </div>
 </template>
 <script>
+import PostModal from '@/components/PostModal.vue'
 export default {
   data () {
     return {
@@ -64,8 +71,13 @@ export default {
       isLoading: false,
       tempArticle: {
         tag: ['']
-      }
+      },
+      getArticle: {},
+      isNew: true
     }
+  },
+  components: {
+    PostModal
   },
   methods: {
     getDate (timestamp) {
@@ -85,17 +97,50 @@ export default {
         })
     },
     updatePost (item) {
-      console.log(item)
-      this.tempArticle = item
-      console.log(this.tempArticle)
-      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/article/${this.tempArticle.id}`
-      this.$http.put(url, { data: this.tempArticle })
+      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/article/${item.id}`
+      this.$http.get(url)
         .then((res) => {
           console.log(res)
+          this.getArticle = res.data.article
+          console.log(this.getArticle.content)
+          const content = this.getArticle.content
+          this.tempArticle = item
+          this.tempArticle.content = content
+          console.log(this.tempArticle.content)
+          console.log(this.tempArticle)
+          this.$http.put(url, { data: this.tempArticle })
+            .then((res) => {
+              console.log(res)
+              alert(res.data.message)
+            })
+            .catch((err) => {
+              console.log(err)
+            })
         })
         .catch((err) => {
-          alert(err)
+          console.log(err)
         })
+    },
+    openArticleModal (isNew, item) {
+      this.isNew = isNew
+      if (this.isNew) {
+        item = ''
+        this.tempArticle = { ...item }
+        this.tempArticle = {
+          create_at: new Date().getTime() / 1000
+        }
+      } else {
+        const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/article/${item.id}`
+        this.$http.get(url)
+          .then((res) => {
+            this.tempArticle = res.data.article
+            console.log(this.tempArticle)
+          })
+          .catch((err) => {
+            console.log(err)
+          })
+      }
+      this.$refs.postModal.openModal()
     }
   },
   mounted () {

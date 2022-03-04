@@ -149,7 +149,7 @@
           <button
             type="button"
             class="btn btn-primary"
-            @click="$emit('update-article', tempArticle)"
+            @click="updateArticle(tempArticle)"
           >
             確認
           </button>
@@ -162,18 +162,50 @@
 import Modal from 'bootstrap/js/dist/modal'
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
 export default {
+  props: {
+    article: {
+      type: Object,
+      default () {
+        return {}
+      }
+    },
+    isNew: {
+      type: Boolean,
+      default: true
+    }
+  },
   data () {
     return {
       modal: '',
       tempArticle: {
         tag: ['']
       },
-      create_at: 0
+      create_at: 0,
       // 參考：https://ckeditor.com/docs/ckeditor5/latest/builds/guides/integration/frameworks/vuejs-v3.html#editor
-      editor : ClassicEditor
-      editorConfig : {
+      editor: ClassicEditor,
+      editorConfig: {
         toolbar: ['heading', 'typing', 'bold', 'italic', '|', 'link']
       }
+    }
+  },
+  watch: {
+    article () {
+      // 因為單向數據流的關係，所以要用深拷貝另外見一個物件來存資料
+      // this.tempArticle = JSON.parse(JSON.stringify(this.article))
+      // 這裡用了解構的方法，並加上 tag 與 isPublic 屬性，推測是如果沒設這兩個屬性，會留存之前帶入的屬性值
+      this.tempArticle = {
+        ...this.article,
+        tag: this.article.tag || [],
+        isPublic: this.article.isPublic || false,
+        content: this.article.content || ''
+      }
+      const dateAndTime = new Date(this.tempArticle.create_at * 1000)
+        .toISOString()
+        .split('T');
+      [this.create_at] = dateAndTime
+    },
+    create_at () {
+      this.tempArticle.create_at = Math.floor(new Date(this.due_date) / 1000)
     }
   },
   mounted () {
@@ -183,27 +215,22 @@ export default {
     })
   },
   methods: {
-      updateArticle (tempCoupon) {
-      console.log(tempCoupon)
+    updateArticle (tempArticle) {
+      console.log(tempArticle)
       let url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/article`
       let httpMethod = 'post'
-      if (!tempCoupon.is_enabled) {
-        tempCoupon.is_enabled = 0
-      }
-      let newCoupon = tempCoupon
       if (!this.isNew) {
         httpMethod = 'put'
-        url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/coupon/${tempCoupon.id}`
-        newCoupon = this.tempCoupon
+        url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/article/${tempArticle.id}`
       }
-      this.$http[httpMethod](url, { data: newCoupon })
+      this.$http[httpMethod](url, { data: tempArticle })
         .then((res) => {
-          this.$emit('update-coupon')
+          this.$emit('update-article')
           console.log(res)
           if (this.isNew) {
-            alert('新增優惠券')
+            alert('新增文章')
           } else {
-            alert('優惠券已更新')
+            alert('文章已更新')
           }
           this.hideModal()
         })
