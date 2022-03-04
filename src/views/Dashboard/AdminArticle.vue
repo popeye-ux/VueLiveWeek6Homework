@@ -1,5 +1,6 @@
 const newLocal=getPosts()
 <template>
+ <Loading :active="isLoading" :z-index="1060"></Loading>
   <h1 class="text-center">這是文章管理介面</h1>
   <div class="container">
        <div class="text-end mt-4">

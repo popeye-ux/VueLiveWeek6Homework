@@ -1,4 +1,5 @@
 <template>
+<Loading :active="isLoading" :z-index="1060"></Loading>
   <h2 class="text-center">這是優惠卷管理</h2>
   <div class="container">
     <div class="text-end mt-4">

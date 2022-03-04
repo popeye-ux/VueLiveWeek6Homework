@@ -2,6 +2,8 @@ import { createApp } from 'vue'
 import 'bootstrap'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import Loading from 'vue3-loading-overlay'
+import 'vue3-loading-overlay/dist/vue3-loading-overlay.css'
 // 匯入文章輸入介面
 import CKEditor from '@ckeditor/ckeditor5-vue'
 // 匯入 vee-validate 主套件
@@ -33,6 +35,8 @@ setLocale('zh_TW')
 const app = createApp(App)
 app.use(router)
 app.use(VueAxios, axios)
+app.component('Loading', Loading)
+// 文章編輯介面
 app.use(CKEditor)
 // 註冊 vee-validate 三個全域元件
 app.component('Form', Form)
