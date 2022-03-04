@@ -161,6 +161,7 @@
 <script>
 import Modal from 'bootstrap/js/dist/modal'
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
+
 export default {
   props: {
     article: {
@@ -178,13 +179,22 @@ export default {
     return {
       modal: '',
       tempArticle: {
+        content: '',
         tag: ['']
       },
       create_at: 0,
       // 參考：https://ckeditor.com/docs/ckeditor5/latest/builds/guides/integration/frameworks/vuejs-v3.html#editor
       editor: ClassicEditor,
       editorConfig: {
-        toolbar: ['heading', 'typing', 'bold', 'italic', '|', 'link']
+        toolbar: {
+          items: [
+            'bold',
+            'italic',
+            'link',
+            'undo',
+            'redo'
+          ]
+        }
       }
     }
   },

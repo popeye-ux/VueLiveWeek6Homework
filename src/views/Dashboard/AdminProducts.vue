@@ -1,4 +1,5 @@
 <template>
+<Loading :active="isLoading" :z-index="1060"></Loading>
   <h2 class="text-center">這是後台產品列表</h2>
   <div class="container">
     <div class="text-end mt-4">
@@ -101,7 +102,8 @@ export default {
         imagesUrl: []
       },
       isNew: false,
-      pagination: {}
+      pagination: {},
+      isLoading: false
     }
   },
   mounted () {
@@ -114,6 +116,7 @@ export default {
   },
   methods: {
     getData (page = 1) {
+      this.isLoading = true
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/products?page=${page}`
       this.$http
         .get(url)
@@ -121,6 +124,7 @@ export default {
           const { products, pagination } = response.data
           this.products = products
           this.pagination = pagination
+          this.isLoading = false
         })
         .catch((err) => {
           alert(err.data.message)

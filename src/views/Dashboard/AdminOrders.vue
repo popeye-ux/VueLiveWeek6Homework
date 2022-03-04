@@ -1,4 +1,5 @@
 <template>
+ <Loading :active="isLoading" :z-index="1060"></Loading>
 <div class="container">
   <h2 class="text-center">這是訂單管理</h2>
    <div class="text-end pt-5">
