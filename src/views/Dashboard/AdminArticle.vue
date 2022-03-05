@@ -45,7 +45,7 @@ const newLocal=getPosts()
               <button class="btn btn-outline-primary btn-sm" type="button" @click="openArticleModal(false, item)">
                 編輯
               </button>
-              <button class="btn btn-outline-danger btn-sm" type="button">
+              <button class="btn btn-outline-danger btn-sm" type="button" @click="openDelModal(item)">
                 刪除
               </button>
             </div>
@@ -53,16 +53,24 @@ const newLocal=getPosts()
         </tr>
       </tbody>
     </table>
-    <post-modal
+    <pagination :pages="pagination" @emit-pages="getPosts"></pagination>
+  </div>
+  <post-modal
       :article="tempArticle"
       :is-new="isNew"
       ref="postModal"
       @update-article="getPosts"
     ></post-modal>
-  </div>
+    <del-post
+      ref="delPost"
+      :temp-article="tempArticle"
+      @update="getPosts"
+    ></del-post>
 </template>
 <script>
+import pagination from '@/components/PaginationComp.vue'
 import PostModal from '@/components/PostModal.vue'
+import delPost from '@/components/DelPost.vue'
 export default {
   data () {
     return {
@@ -78,7 +86,9 @@ export default {
     }
   },
   components: {
-    PostModal
+    PostModal,
+    delPost,
+    pagination
   },
   methods: {
     getDate (timestamp) {
@@ -86,21 +96,25 @@ export default {
       return date.toLocaleDateString()
     },
     getPosts (page = 1) {
+      this.isLoading = true
       this.nowPage = page
       const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/articles?page=${page}`
       this.$http.get(url)
         .then((res) => {
-          console.log(res)
+          // console.log(res)
           this.posts = res.data.articles
+          this.pagination = res.data.pagination
+          this.isLoading = false
         })
         .catch((err) => {
-          console.log(err)
+          console.dir(err)
         })
     },
     updatePost (item) {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/article/${item.id}`
       this.$http.get(url)
         .then((res) => {
+          this.isLoading = true
           console.log(res)
           this.getArticle = res.data.article
           console.log(this.getArticle.content)
@@ -112,6 +126,7 @@ export default {
           this.$http.put(url, { data: this.tempArticle })
             .then((res) => {
               console.log(res)
+              this.isLoading = false
               alert(res.data.message)
             })
             .catch((err) => {
@@ -142,6 +157,11 @@ export default {
           })
       }
       this.$refs.postModal.openModal()
+    },
+    openDelModal (item) {
+      console.log(item)
+      this.tempArticle = { ...item }
+      this.$refs.delPost.openModal()
     }
   },
   mounted () {

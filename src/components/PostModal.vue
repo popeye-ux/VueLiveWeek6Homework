@@ -215,7 +215,7 @@ export default {
       [this.create_at] = dateAndTime
     },
     create_at () {
-      this.tempArticle.create_at = Math.floor(new Date(this.due_date) / 1000)
+      this.tempArticle.create_at = Math.floor(new Date(this.create_at) / 1000)
     }
   },
   mounted () {
@@ -226,7 +226,6 @@ export default {
   },
   methods: {
     updateArticle (tempArticle) {
-      console.log(tempArticle)
       let url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/article`
       let httpMethod = 'post'
       if (!this.isNew) {
