@@ -7,6 +7,7 @@
         class="btn btn-outline-danger"
         type="button"
         @click="removeAllOrders"
+        :disabled="orderData.length === 0"
       >
         刪除全部訂單
       </button>
@@ -37,7 +38,7 @@
               </tbody>
             </table>
           </td>
-          <td class="text-right">{{item.total}}</td>
+          <td class="text-right">{{$filters.currency(item.total)}}</td>
           <td>
             <div class="form-check form-switch">
               <input

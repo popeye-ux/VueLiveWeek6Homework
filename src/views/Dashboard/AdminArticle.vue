@@ -117,24 +117,24 @@ export default {
           this.isLoading = true
           console.log(res)
           this.getArticle = res.data.article
-          console.log(this.getArticle.content)
+          // console.log(this.getArticle.content)
           const content = this.getArticle.content
           this.tempArticle = item
           this.tempArticle.content = content
           console.log(this.tempArticle.content)
-          console.log(this.tempArticle)
           this.$http.put(url, { data: this.tempArticle })
             .then((res) => {
               console.log(res)
               this.isLoading = false
-              alert(res.data.message)
+              this.showAlert({ icon: 'success', title: `${res.data.message}` })
+              // alert(res.data.message)
             })
             .catch((err) => {
-              console.log(err)
+              console.dir(err)
             })
         })
         .catch((err) => {
-          console.log(err)
+          console.dir(err)
         })
     },
     openArticleModal (isNew, item) {
@@ -162,6 +162,10 @@ export default {
       console.log(item)
       this.tempArticle = { ...item }
       this.$refs.delPost.openModal()
+    },
+    showAlert (message) {
+      // Use sweetalert2
+      this.$swal(message)
     }
   },
   mounted () {

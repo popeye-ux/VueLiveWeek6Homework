@@ -5,6 +5,7 @@
       <button
         class="btn btn-outline-danger"
         type="button"
+        :disabled="cartData.carts.length === 0"
         @click="removeAllCart"
       >
         清空購物車
@@ -21,7 +22,7 @@
       </thead>
       <tbody>
         <!-- 判斷購物車資料有沒有存在 -->
-        <template v-if="cartData.carts">
+        <template v-if="cartData.carts.length">
           <tr v-for="item in cartData.carts" :key="item.id">
             <td>
               <button
@@ -69,7 +70,7 @@
               </div>
             </td>
             <td class="text-center">
-              {{ item.product.price }} 元 /
+              {{ $filters.currency(item.product.price) }} 元 /
               <small class="text-success">折扣價：</small>
               {{}}
             </td>
@@ -79,7 +80,7 @@
       <tfoot>
         <tr>
           <td colspan="3" class="text-end">總計</td>
-          <td class="text-center">{{ cartData.total }}</td>
+          <td class="text-center">{{ $filters.currency(cartData.total) }}</td>
         </tr>
         <tr>
           <td colspan="3" class="text-end text-success">折扣價</td>
@@ -87,14 +88,17 @@
         </tr>
       </tfoot>
     </table>
-    <router-link to="/orderinform" class="btn btn-primary d-flex justify-content-center mt-4" >下一步</router-link>
+    <router-link to="/orderinform" class="btn btn-primary d-flex justify-content-center mt-4" :class="{'disabled':cartData.carts.length === 0 }">下一步</router-link>
   </div>
 </template>
 <script>
+import emitter from '../libs/emitter'
 export default {
   data () {
     return {
-      cartData: {},
+      cartData: {
+        carts: []
+      },
       isLoadingItem: ''
     }
   },
@@ -104,8 +108,9 @@ export default {
       this.$http
         .get(url)
         .then((res) => {
-          // console.log(res)
+          console.log(res)
           this.cartData = res.data.data
+          console.log(this.cartData.carts.length)
         })
         .catch((err) => {
           alert(err.data.message)
@@ -119,6 +124,7 @@ export default {
         .delete(url)
         .then((res) => {
           console.log(res)
+          emitter.emit('get-cart')
           this.getCart()
         })
         .catch((err) => {
@@ -136,6 +142,7 @@ export default {
         .then(res => {
           console.log(res)
           this.getCart()
+          emitter.emit('get-cart')
           this.isLoadingItem = ''
         })
         .catch(err => {
@@ -149,6 +156,7 @@ export default {
         .then(res => {
           alert(res.data.message)
           this.getCart()
+          emitter.emit('get-cart')
           this.isLoadingItem = ''
         })
         .catch(err => {

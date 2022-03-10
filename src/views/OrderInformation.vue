@@ -81,7 +81,7 @@
             ></textarea>
           </div>
           <div class="text-end">
-            <button type="submit" class="btn btn-danger">送出訂單</button>
+            <button type="submit" class="btn btn-danger" @submit="submitOrders" :disabled="Object.keys(errors).length > 0">送出訂單</button>
           </div>
         </Form>
       </div>
@@ -105,7 +105,7 @@
                   {{ item.qty }}
                 </td>
                 <td class="text-center">
-                  {{ item.product.price }} 元 /
+                  {{ $filters.currency(item.product.price) }} 元 /
                   <small class="text-success">折扣價：</small>
                   {{}}
                 </td>
@@ -115,7 +115,7 @@
           <tfoot>
             <tr>
               <td colspan="3" class="text-end">總計</td>
-              <td class="text-center">{{ cartData.total }}</td>
+              <td class="text-center">{{ $filters.currency(cartData.total) }}</td>
             </tr>
             <tr>
               <td colspan="3" class="text-end text-success">折扣價</td>

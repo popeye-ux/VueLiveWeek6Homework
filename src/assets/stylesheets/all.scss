@@ -1,0 +1,29 @@
+@import "~bootstrap/scss/functions";
+@import "./helpers/variables"; //自定義
+@import "~bootstrap/scss/bootstrap";
+
+body {
+  background: #f4f5f6;
+  color: #141414;
+  letter-spacing: 1px;
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; //body設為100%的視窗高
+}
+.footer {
+  margin-top: auto; //利用flex特性，margin-top設auto後會自動計算上面有多少空間而將元素往下推移
+  height: 50px;
+}
+.container.custom-container-width {
+  max-width: 1200px;       // 最後內容寬會是 980px
+}
+// 產品頁
+.product-title {
+  min-height: 2.5rem;
+}
+.add-btn:hover {
+  background: #fd1919;
+  border: #fd1919 1px solid;
+}

@@ -100,7 +100,61 @@
                   </div>
                 </div>
               </div>
-
+              <hr />
+              <!-- 產品規格 -->
+              <!-- v-model 綁定 tempProduct.movement 機芯 -->
+              <div class="row">
+              <div class="mb-3 col-md-6">
+                <div class="form-floating">
+                  <input
+                    id="movement"
+                    type="text"
+                    class="form-control"
+                    placeholder="請輸入機心規格"
+                    v-model="tempProduct.movement"
+                  />
+                  <label for="movement" class="form-label">動力</label>
+                </div>
+              </div>
+              <!-- v-model 綁定 tempProduct.movement 機芯 -->
+              <div class="mb-3 col-md-6">
+                <div class="form-floating">
+                  <input
+                    id="size"
+                    type="text"
+                    class="form-control"
+                    placeholder="請輸入錶面直徑"
+                    v-model="tempProduct.size"
+                  />
+                  <label for="size" class="form-label">錶面直徑</label>
+                </div>
+              </div>
+              <div class="mb-3 col-md-6">
+                <div class="form-floating">
+                  <input
+                    id="water"
+                    type="text"
+                    class="form-control"
+                    placeholder="請輸入售價"
+                    v-model="tempProduct.water"
+                  />
+                  <label for="water" class="form-label">防水</label>
+                </div>
+              </div>
+              <div class="mb-3 col-md-6">
+                <div class="form-floating">
+                  <input
+                    id="functions"
+                    type="text"
+                    class="form-control"
+                    placeholder="請輸入功能"
+                    v-model="tempProduct.functions"
+                  />
+                  <label for="functions" class="form-label">功能</label>
+                </div>
+              </div>
+              </div>
+              <!-- 產品規格結束 -->
               <hr />
               <div class="mb-3">
                 <div class="form-floating">
@@ -119,13 +173,39 @@
                 <div class="form-floating">
                   <!-- v-model 綁定 tempProduct.content -->
                   <textarea
-                    id="description"
+                    id="content"
                     type="text"
                     class="form-control"
                     placeholder="請輸入說明內容"
                     v-model="tempProduct.content"
                   ></textarea>
                   <label for="content" class="form-label">說明內容</label>
+                </div>
+              </div>
+              <div class="mb-3">
+                <div class="form-floating">
+                  <!-- v-model 綁定 tempProduct.content -->
+                  <textarea
+                    id="story1"
+                    type="text"
+                    class="form-control"
+                    placeholder="請輸入故事"
+                    v-model="tempProduct.story1"
+                  ></textarea>
+                  <label for="story21" class="form-label">故事</label>
+                </div>
+              </div>
+              <div class="mb-3">
+                <div class="form-floating">
+                  <!-- v-model 綁定 tempProduct.content -->
+                  <textarea
+                    id="others"
+                    type="text"
+                    class="form-control"
+                    placeholder="請輸入其他內容"
+                    v-model="tempProduct.others"
+                  ></textarea>
+                  <label for="others" class="form-label">其他</label>
                 </div>
               </div>
               <div class="mb-3">
@@ -140,6 +220,21 @@
                   />
                   <label class="form-check-label" for="is_enabled"
                     >是否啟用</label
+                  >
+                </div>
+              </div>
+              <div class="mb-3">
+                <div class="form-check">
+                  <input
+                    id="recommend"
+                    class="form-check-input"
+                    type="checkbox"
+                    :true-value="1"
+                    :false-value="0"
+                    v-model="tempProduct.recommend"
+                  />
+                  <label class="form-check-label" for="recommend"
+                    >推薦商品</label
                   >
                 </div>
               </div>
@@ -228,7 +323,6 @@
       </div>
     </div>
   </div>
-  `
 </template>
 
 <script>
@@ -244,7 +338,7 @@ export default {
   },
   watch: {
     product () {
-      this.tempProduct = JSON.parse(JSON.stringify(this.product)) // 因為單向數據流的關係，所以要用深拷貝另外見一個物件來存資料
+      this.tempProduct = JSON.parse(JSON.stringify(this.product)) // 因為單向數據流的關係，所以要用深拷貝另外一個物件來存資料
     }
   },
   mounted () {

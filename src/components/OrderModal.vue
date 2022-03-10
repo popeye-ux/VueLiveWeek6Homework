@@ -64,7 +64,7 @@
                       <span v-if="tempOrder.is_paid">
                           {{paidOrder(tempOrder)}}
                       </span>
-                      <span v-else>時間不正確</span>
+                      <span v-else>尚未付款</span>
                     </td>
                   </tr>
                   <tr>

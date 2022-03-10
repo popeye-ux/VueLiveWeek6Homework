@@ -1,28 +1,17 @@
 <template>
+<div class="wrapper">
 <FrontNavbar></FrontNavbar>
-  <h2 class="text-center">前台的畫面</h2>
-  <router-view />
+<router-view />
+<FrontFooter></FrontFooter>
+</div>
 </template>
 <script>
 import FrontNavbar from '@/components/FrontNavbar.vue'
+import FrontFooter from '@/components/FrontFooter.vue'
 export default {
   components: {
-    FrontNavbar
+    FrontNavbar,
+    FrontFooter
   }
 }
 </script>
-<style lang="scss" scoped>
-  body {
-    background: #090043;
-    color: #fff;
-  }
-  svg{
-    width: 300px;
-  }
-  .st0 {
-    fill: #ffffff;
-  }
-  .st1 {
-    fill: #ff0000;
-  }
-</style>

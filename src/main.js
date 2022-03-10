@@ -1,9 +1,13 @@
 import { createApp } from 'vue'
 import 'bootstrap'
+import 'bootstrap-icons/font/bootstrap-icons.css'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import Loading from 'vue3-loading-overlay'
 import 'vue3-loading-overlay/dist/vue3-loading-overlay.css'
+// Sweet alert2 提示框
+import VueSweetalert2 from 'vue-sweetalert2'
+import 'sweetalert2/dist/sweetalert2.min.css'
 // 匯入文章輸入介面
 import CKEditor from '@ckeditor/ckeditor5-vue'
 // 匯入 vee-validate 主套件
@@ -16,6 +20,7 @@ import { required, email, min } from '@vee-validate/rules'
 import { localize, setLocale } from '@vee-validate/i18n'
 // 匯入繁體中文語系檔案
 import zhTW from '@vee-validate/i18n/dist/locale/zh_TW.json'
+import { currency } from './methods/filters'
 
 import App from './App.vue'
 import router from './router'
@@ -33,9 +38,14 @@ configure({
 setLocale('zh_TW')
 
 const app = createApp(App)
+app.config.globalProperties.$filters = {
+  currency
+}
 app.use(router)
 app.use(VueAxios, axios)
 app.component('Loading', Loading)
+// Sweet alert2 提示框
+app.use(VueSweetalert2)
 // 文章編輯介面
 app.use(CKEditor)
 // 註冊 vee-validate 三個全域元件

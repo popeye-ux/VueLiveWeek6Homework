@@ -1,31 +1,33 @@
 <template>
-  <h1 class="text-center">產品列表</h1>
-  <div class="container">
+  <div class="container wrapper mt-7">
     <!-- row 決定內層的欄位數量 -->
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-5">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-5">
       <!-- 內層不決定寬度 -->
-      <div class="col" v-for="item in products" :key="item.id">
+      <div class="col mb-6" v-for="item in products" :key="item.id">
         <div class="card h-100">
           <div class="card-body">
             <img
               :src="item.imageUrl"
               class="card-img-top img-fluid"
-              alt="..."
+              :alt="item.title"
+              style="background-color:#ebedee"
             />
-            <div class="text-center mt-2">
-              <h5 class="card-title">{{ item.title }}</h5>
-              <h6 class="card-subtitle">{{ item.description }}</h6>
-              <p class="card-text">{{ item.price }}</p>
-              <del class="card-text">{{ item.origin_price }}</del>
+            <div class="mt-4 text-center">
+              <h6 class="card-subtitle text-info">{{ item.description }}</h6>
+              <div class="product-title"><h5 class="card-title h4 font-monospace">{{ item.title }}</h5></div>
+              <div class="d-flex justify-content-evenly mx-3">
+                <div class="card-text">NT$.{{ $filters.currency(item.price) }}</div>
+                <div class="align-middle"><del class="card-text h6 text-info">NT$.{{ $filters.currency(item.origin_price) }}</del></div>
+              </div>
             </div>
           </div>
-          <div class="card-footer">
-            <router-link :to="`/product/${item.id}`" class="btn btn-primary">
+          <div class="card-footer d-flex justify-content-between">
+            <router-link :to="`/product/${item.id}`" class="btn btn-outline-info">
               查看更多
             </router-link>
             <button
               type="button"
-              class="btn btn-danger"
+              class="btn btn-primary add-btn"
               @click="addToCart(item.id)"
               :disabled="isLoadingItem === item.id"
             >
@@ -41,7 +43,7 @@
     </div>
   </div>
 
-  <div class="container mt-3">
+  <div class="container mt-3 mb-7">
     <div class="row">
       <!-- props 內層:pages 外層:pagination -->
       <pagination :pages="pagination" @get-products="getData"></pagination>
@@ -68,6 +70,7 @@ export default {
       this.$http.get(url).then((response) => {
         const { products, pagination } = response.data
         this.products = products
+        console.log(this.products)
         this.pagination = pagination
       })
     },

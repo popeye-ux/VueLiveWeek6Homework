@@ -34,8 +34,8 @@
             ></div>
           </td>
           <td class="align-middle">{{ item.title }}</td>
-          <td class="text-end align-middle px-5">{{ item.origin_price }}</td>
-          <td class="text-end align-middle px-5">{{ item.price }}</td>
+          <td class="text-end align-middle px-5">{{ $filters.currency(item.origin_price) }}</td>
+          <td class="text-end align-middle px-5">{{ $filters.currency(item.price) }}</td>
           <td class="align-middle">
             <button
               type="button"

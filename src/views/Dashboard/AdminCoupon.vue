@@ -24,7 +24,7 @@
       <tbody>
         <tr v-for="item in coupons" :key="item.id">
           <td>{{ item.title }}</td>
-          <td>{{ item.percent }}</td>
+          <td>{{ item.percent }}%</td>
           <td>{{ getDate(item.due_date) }}</td>
           <td>
             <div class="form-check form-switch">
