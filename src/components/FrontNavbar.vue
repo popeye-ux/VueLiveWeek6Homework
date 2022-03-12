@@ -67,16 +67,35 @@
             <router-link to="/" class="nav-link">Home</router-link>
           </li> -->
           <li class="nav-item me-5">
-            <router-link to="/about" class="nav-link">About</router-link>
+            <router-link to="/about" class="nav-link bottom-line effect-1"
+              >About</router-link
+            >
           </li>
           <li class="nav-item me-5">
-            <router-link to="/products" class="nav-link">Webstore</router-link>
+            <router-link to="/products" class="nav-link bottom-line effect-1"
+              >Webstore</router-link
+            >
+          </li>
+          <li class="nav-item me-5">
+            <router-link to="/faq" class="nav-link bottom-line effect-1"
+              >FAQ</router-link
+            >
           </li>
           <li class="nav-item me-5 pt-1">
             <router-link to="/cart" class="btn btn-sm position-relative"
-              ><i class="bi bi-bag-fill align-middle "></i><span class="position-absolute top-0 start-90 translate-middle badge rounded-pill bg-danger">{{
-                cartData.carts.length
-              }}</span></router-link
+              ><i class="bi bi-bag-fill align-middle"></i
+              ><span
+                class="
+                  position-absolute
+                  top-0
+                  start-90
+                  translate-middle
+                  badge
+                  rounded-pill
+                  bg-danger
+                "
+                >{{ cartData.carts.length }}</span
+              ></router-link
             >
           </li>
         </ul>
@@ -90,10 +109,10 @@ svg {
   width: 140px;
 }
 .st0 {
-  fill: #141414;
+  fill: #0f1d40;
 }
 .st1 {
-  fill: #ff0000;
+  fill: #db0000;
 }
 </style>
 <script>

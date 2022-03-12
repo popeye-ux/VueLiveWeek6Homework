@@ -7,6 +7,11 @@ const routes = [
     component: () => import('../views/FrontView.vue'),
     children: [
       {
+        path: '/',
+        name: 'home',
+        component: () => import('@/views/HomeView.vue')
+      },
+      {
         path: 'about',
         name: 'About',
         // route level code-splitting
@@ -31,6 +36,11 @@ const routes = [
         path: 'orderinform',
         name: 'orderinform',
         component: () => import('../views/OrderInformation.vue')
+      },
+      {
+        path: 'faq',
+        name: 'faq',
+        component: () => import('../views/FaqView.vue')
       }
     ]
   },

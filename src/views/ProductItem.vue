@@ -1,4 +1,5 @@
 <template>
+<Loading :active="isLoading" :z-index="1060"></Loading>
   <div class="container custom-container-width mt-7 mb-7">
     <div class="row">
       <div class="col-sm-6">
@@ -51,11 +52,11 @@
             </button>
           </div>
         </div>
-        <div>
+        <div class="mt-4">
           <router-link
             to="/cart"
-            class="btn btn-primary d-flex justify-content-center mt-4"
-            >檢視購物車</router-link
+            class="btn  btn-sm"
+            ><i class="bi bi-bag-fill me-1"></i>檢視購物車</router-link
           >
         </div>
       </div>
@@ -110,7 +111,7 @@
           </div>
           <div class="col mb-4">
             <span class="fw-bolder"
-              ><i class="bi bi-motherboard-fill"></i>功能：</span
+              ><i class="bi bi-motherboard-fill me-1"></i>功能：</span
             >{{ productDetail.functions }}
           </div>
         </div>
@@ -198,32 +199,42 @@ export default {
       qty: 1,
       isLoadingItem: '',
       products: [],
-      recommendLike: []
+      recommendLike: [],
+      isLoading: false
+    }
+  },
+  watch: {
+    $route () {
+      window.scroll(0, 0)
+      this.getProduct()
     }
   },
   methods: {
     getData () {
+      this.isLoading = true
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products`
       this.$http.get(url).then((response) => {
         this.products = response.data.products
-        console.log(this.productDetail.id)
-        const noId = this.productDetail.id
+        // console.log(this.productDetail.id)
+        const currentId = this.productDetail.id
         this.recommendLike = this.products.filter(function (item) {
-          if (item.id !== noId && item.recommend === 1) {
+          if (item.id !== currentId && item.recommend === 1) {
             return item
           }
         })
-        console.log(this.recommendLike)
+        this.isLoading = false
       })
     },
     getProduct () {
+      this.isLoading = true
       const { id } = this.$route.params
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/product/${id}`
       this.$http.get(url).then((response) => {
-        console.log(response)
+        // console.log(response)
         this.productDetail = response.data.product
-        console.log(this.productDetail.imagesUrl[0])
+        // console.log(this.productDetail.imagesUrl[0])
         this.getData()
+        this.isLoading = false
       })
     },
     addToCart (id, qty = 1) {

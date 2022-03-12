@@ -21,18 +21,18 @@
               </div>
             </div>
           </div>
-          <div class="card-footer d-flex justify-content-between">
-            <router-link :to="`/product/${item.id}`" class="btn btn-outline-info">
+          <div class="card-footer d-flex justify-content-between mb-3">
+            <router-link :to="`/product/${item.id}`" class="btn more-btn">
               查看更多
             </router-link>
             <button
               type="button"
-              class="btn btn-primary add-btn"
+              class="btn add-btn"
               @click="addToCart(item.id)"
               :disabled="isLoadingItem === item.id"
             >
               <span
-                class="spinner-border spinner-border-sm"
+                class="spinner-border spinner-border-sm fill"
                 v-show="isLoadingItem === item.id"
               ></span
               >加入購物車
