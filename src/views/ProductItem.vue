@@ -1,6 +1,6 @@
 <template>
 <Loading :active="isLoading" :z-index="1060"></Loading>
-  <div class="container custom-container-width mt-7 mb-7">
+  <div class="container custom-container-width mt-7 mb-7 p-0">
     <div class="row">
       <div class="col-sm-6">
         <img
@@ -40,7 +40,7 @@
             />
             <button
               type="button"
-              class="btn btn-danger"
+              class="btn add-btn"
               @click="addToCart(productDetail.id)"
               :disabled="isLoadingItem === productDetail.id"
             >
@@ -168,7 +168,7 @@
           </div>
         </div>
         <div class="card-footer d-flex justify-content-between">
-          <router-link :to="`/product/${select.id}`" class="btn btn-outline-info">
+          <router-link :to="`/product/${select.id}`" class="btn more-btn">
             查看更多
           </router-link>
           <button
@@ -238,9 +238,15 @@ export default {
       })
     },
     addToCart (id, qty = 1) {
+      qty = this.qty
       const data = {
         product_id: id,
         qty
+      }
+      if (this.qty <= 0) {
+        this.showAlert({ icon: 'error', title: '數量必須大於0' })
+        // alert('數量必須大於0')
+        return
       }
       this.isLoadingItem = id
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
@@ -248,19 +254,18 @@ export default {
         .post(url, { data })
         .then((res) => {
           console.log(res)
-          if (data.qty <= 0) {
-            alert('數量必須大於0')
-            // this.isLoadingItem = '';
-            return
-          }
           this.isLoadingItem = ''
-          alert(res.data.message)
+          this.showAlert({ icon: 'success', title: `${res.data.message}` })
           emitter.emit('get-cart')
         })
         .catch((err) => {
-          console.log(err.data.message)
+          this.showAlert({ icon: 'error', title: `${err.message}` })
           this.isLoadingItem = ''
         })
+    },
+    showAlert (message) {
+      // Use sweetalert2
+      this.$swal(message)
     }
   },
   mounted () {

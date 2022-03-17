@@ -121,7 +121,7 @@ export default {
           const content = this.getArticle.content
           this.tempArticle = item
           this.tempArticle.content = content
-          console.log(this.tempArticle.content)
+          // console.log(this.tempArticle.content)
           this.$http.put(url, { data: this.tempArticle })
             .then((res) => {
               console.log(res)

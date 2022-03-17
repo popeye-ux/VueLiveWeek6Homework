@@ -38,6 +38,16 @@ const routes = [
         component: () => import('../views/OrderInformation.vue')
       },
       {
+        path: 'checkout/:id',
+        name: 'checkout',
+        component: () => import('../views/CheckOut.vue')
+      },
+      // {
+      //   path: 'checkpayment/:id',
+      //   name: 'checkpayment',
+      //   component: () => import('../views/CheckPay.vue')
+      // },
+      {
         path: 'faq',
         name: 'faq',
         component: () => import('../views/FaqView.vue')

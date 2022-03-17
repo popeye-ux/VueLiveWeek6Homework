@@ -2,10 +2,10 @@
   <Loading :active="isLoading" :z-index="1060"></Loading>
   <div class="container-fluid mt-3 p-0">
     <div class="headPic-cart d-flex align-items-center justify-content-center">
-      <span class="head-title">Cart</span>
+      <span class="head-title">Shopping Bag</span>
     </div>
   </div>
-  <div class="container mb-7">
+  <div class="container  mb-7">
     <div class="text-end pt-5">
       <button
         class="btn btn-outline-danger"
@@ -16,15 +16,12 @@
         清空購物車
       </button>
     </div>
-    <table
-      class="table align-middle mt-3"
-      style="padding-right: 0; padding-left: 0"
-    >
+    <table class="table align-middle mt-3" style="padding-right:0;padding-left:0;">
       <thead>
         <tr>
           <th style="width: 150px"></th>
           <th class="text-start">產品名稱</th>
-          <th class="text-center" style="width: 200px">數量/單位</th>
+          <th  class="text-center" style="width: 200px">數量/單位</th>
           <th class="text-center">單價</th>
           <th class="text-end">合計</th>
           <th class="text-center">刪除</th>
@@ -35,15 +32,15 @@
         <template v-if="cartData.carts.length">
           <tr v-for="item in cartData.carts" :key="item.id">
             <!-- 商品圖 -->
-            <td class="text-center">
+            <td class="text-center ">
               <div
-                style="
-                  height: 150px;
-                  background-size: cover;
-                  background-position: center center;
-                "
-                :style="{ backgroundImage: `url(${item.product.imageUrl})` }"
-              ></div>
+              style="
+                height: 150px;
+                background-size: cover;
+                background-position: center center;
+              "
+              :style="{ backgroundImage: `url(${item.product.imageUrl})` }"
+            ></div>
             </td>
             <!-- 商品名稱 -->
             <td>
@@ -119,16 +116,16 @@
         <tr>
           <!-- <td colspan="4" class="text-end text-danger fw-bolder"><h3>折扣價總計</h3></td> -->
           <td colspan="6" class="text-end text-danger fw-bolder pt-3">
-            <h3 class="fw-bolder">
-              總價 {{ $filters.currency(cartData.total) }}元
-            </h3>
+           <h3 class="fw-bolder ">總價 {{ $filters.currency(cartData.total) }}元</h3>
           </td>
           <td></td>
         </tr>
       </tfoot>
     </table>
     <div class="d-flex justify-content-between">
-      <router-link to="/products" class="btn more-btn btn-lg mt-3 fw-bolder"
+      <router-link
+        to="/products"
+        class="btn more-btn btn-lg mt-3 fw-bolder"
         >繼續選購</router-link
       >
       <router-link

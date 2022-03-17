@@ -1,7 +1,12 @@
 <template>
-  <div class="container my-7">
-    <div class="row p-5 text-center">
-      <h2 class="fw-bolder">時間是偉大的作者，它會給每個人寫出完美的結局來</h2>
+  <div class="container-fluid mt-3 p-0">
+    <div class="headPic d-flex align-items-center justify-content-center">
+      <span class="head-title">About</span>
+    </div>
+  </div>
+  <div class="container my-6">
+    <div class="row p-5 mb-5 text-center">
+      <h2 class="fw-bolder">時間是偉大的作者，它會給每個人寫出完美的結局</h2>
     </div>
     <div class="row row row-cols-1 row-cols-sm-2 g-5">
       <div class="col mb-5">

@@ -1,4 +1,9 @@
 <template>
+ <div class="container-fluid mt-3 p-0">
+    <div class="headPic-webstore d-flex align-items-center justify-content-center">
+      <span class="head-title">Webstore</span>
+    </div>
+  </div>
   <div class="container wrapper mt-7">
     <!-- row 決定內層的欄位數量 -->
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-5">
@@ -91,13 +96,18 @@ export default {
             return
           }
           this.isLoadingItem = ''
-          alert(res.data.message)
+          this.showAlert({ icon: 'success', title: `${res.data.message}` })
+          // alert(res.data.message)
           emitter.emit('get-cart')
         })
         .catch((err) => {
-          console.log(err.data.message)
+          this.showAlert({ icon: 'success', title: `${err.message}` })
           this.isLoadingItem = ''
         })
+    },
+    showAlert (message) {
+      // Use sweetalert2
+      this.$swal(message)
     }
   },
   mounted () {

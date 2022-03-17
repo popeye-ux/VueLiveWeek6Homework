@@ -1,29 +1,33 @@
 <template>
-  <div class="container mb-5">
-    <div class="row">
-      <h1>FAQ</h1>
+  <div class="container-fluid mt-3 p-0">
+    <div
+      class="d-flex align-items-center justify-content-center headPic-faq"
+    >
+      <span class="head-title">FAQ</span>
     </div>
+  </div>
+  <div class="container mt-7 mb-5">
     <div class="row px-7 mb-5">
       <h2>商品購物須知</h2>
-      <div class="accordion" id="accordionExample">
+      <div class="accordion" id="accordionExampleA">
         <div class="accordion-item">
-          <h2 class="accordion-header" id="headingOne">
+          <h2 class="accordion-header" id="headingOne1">
             <button
               class="accordion-button"
               type="button"
               data-bs-toggle="collapse"
-              data-bs-target="#collapseOne"
+              data-bs-target="#collapseOne1"
               aria-expanded="true"
-              aria-controls="collapseOne"
+              aria-controls="collapseOne1"
             >
               收到商品後，我需要注意什麼事項，以確保我的購物權益呢？
             </button>
           </h2>
           <div
-            id="collapseOne"
+            id="collapseOne1"
             class="accordion-collapse collapse show"
-            aria-labelledby="headingOne"
-            data-bs-parent="#accordionExample"
+            aria-labelledby="headingOne1"
+            data-bs-parent="#accordionExampleA"
           >
             <div class="accordion-body">
               Moment
@@ -359,7 +363,12 @@
             data-bs-parent="#accordionExample"
           >
             <div class="accordion-body">
-              適用的作業系統：Windows XP/ Windows NT、Windows2000/ Windows ME、Windows98。 適用的瀏覽器： chrome 1.0以上、Firefox 8.0以上、Edge 12.0以上、Safari 4.0以上。網路連線：建議使用512K/ 64K以上ADSL。電腦的配備： 電腦主機：Pentium lll以上300MHz以上，或其他0％相容機種，記憶容量：建議使用128MB以上，硬碟空間：程式本體約需250MB，為確保瀏覽順暢，請確認有250MB以上空間 顯示模式：支援DirectX之3D顯示卡，並內建16MB以上之VRAM。
+              適用的作業系統：Windows XP/ Windows NT、Windows2000/ Windows
+              ME、Windows98。 適用的瀏覽器： chrome 1.0以上、Firefox
+              8.0以上、Edge 12.0以上、Safari 4.0以上。網路連線：建議使用512K/
+              64K以上ADSL。電腦的配備： 電腦主機：Pentium
+              lll以上300MHz以上，或其他0％相容機種，記憶容量：建議使用128MB以上，硬碟空間：程式本體約需250MB，為確保瀏覽順暢，請確認有250MB以上空間
+              顯示模式：支援DirectX之3D顯示卡，並內建16MB以上之VRAM。
             </div>
           </div>
         </div>
@@ -383,7 +392,7 @@
             data-bs-parent="#accordionExample"
           >
             <div class="accordion-body">
-             『我的帳戶』內包含了客戶資料修改、密碼修改、訂單查詢、紅利金管理、暫收款管理、折價券管理、中獎記錄、追蹤清單，利用以上的介面可查詢到個人的訂購狀況。
+              『我的帳戶』內包含了客戶資料修改、密碼修改、訂單查詢、紅利金管理、暫收款管理、折價券管理、中獎記錄、追蹤清單，利用以上的介面可查詢到個人的訂購狀況。
             </div>
           </div>
         </div>

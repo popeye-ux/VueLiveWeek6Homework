@@ -67,14 +67,14 @@ $colors: (
 // scss-docs-end colors-map
 
 // scss-docs-start theme-color-variables
-$primary:      #0f1d40; //$blue !default;
+$primary:      #141414; //$blue !default;
 $secondary:     $gray-600 !default;
-$success:       $green !default;
+$success:       #7383A3;//$green !default;
 $info:          #848484; //$cyan !default;
 $warning:       $yellow !default;
 $danger:        #db0000;//$red !default;
 $light:         $gray-100 !default;
-$dark:          $gray-900 !default;
+$dark:          #6b7288;//$gray-900 !default;
 // scss-docs-end theme-color-variables
 
 // scss-docs-start theme-colors-map
@@ -687,7 +687,7 @@ $mark-bg:                     #fcf8e3 !default;
 
 // scss-docs-start table-variables
 $table-cell-padding-y:        .5rem !default;
-$table-cell-padding-x:        .5rem !default;
+$table-cell-padding-x:        0;//.5rem !default;
 $table-cell-padding-y-sm:     .25rem !default;
 $table-cell-padding-x-sm:     .25rem !default;
 
@@ -749,7 +749,7 @@ $input-btn-font-family:       null !default;
 $input-btn-font-size:         $font-size-base !default;
 $input-btn-line-height:       $line-height-base !default;
 
-$input-btn-focus-width:         .25rem !default;
+$input-btn-focus-width:         0;//.25rem !default;
 $input-btn-focus-color-opacity: .25 !default;
 $input-btn-focus-color:         rgba($component-active-bg, $input-btn-focus-color-opacity) !default;
 $input-btn-focus-blur:          0 !default;

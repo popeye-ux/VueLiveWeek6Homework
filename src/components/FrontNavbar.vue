@@ -109,10 +109,10 @@ svg {
   width: 140px;
 }
 .st0 {
-  fill: #0f1d40;
+  fill: #0e0e0e;
 }
 .st1 {
-  fill: #db0000;
+  fill: #ffad2d;
 }
 </style>
 <script>
