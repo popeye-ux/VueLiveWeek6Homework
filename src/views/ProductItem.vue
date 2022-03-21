@@ -270,6 +270,7 @@ export default {
   },
   mounted () {
     this.getProduct()
+    window.scroll(0, 0)
   }
 }
 </script>

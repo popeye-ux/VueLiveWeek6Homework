@@ -1,4 +1,4 @@
-@import "swiper-vars.scss";
+@import 'swiper-vars.scss';
 @at-root {
   :root {
     /*
@@ -20,10 +20,6 @@
   transition: 300ms opacity;
   transform: translate3d(0, 0, 0);
   z-index: 10;
-  box-shadow: 0.2px 0px 2.7px rgba(0, 0, 0, 0.062),
-    0.6px 0px 6.9px rgba(0, 0, 0, 0.089), 1.2px 0px 14.2px rgba(0, 0, 0, 0.111),
-    2.6px 0px 29.2px rgba(0, 0, 0, 0.138), 7px 0px 80px rgba(0, 0, 0, 0.2);
-
   &.swiper-pagination-hidden {
     opacity: 0;
   }
@@ -39,9 +35,9 @@
   // width: 100%;
   display: flex;
   bottom: 20px;
-  right: -200px;
-  width: 320px;
-  height: 80px;
+  right: -100px;
+  width: 330px;
+  height: 79px;
   background: #000;
 }
 /* Bullets */
@@ -77,18 +73,11 @@
   inset: 0;
   color: #fff;
   stroke: #fff;
-  stroke-width: 0px;
+  stroke-width: 2px;
   fill: none;
-  z-index: 20;
   // 改過
-  width: var(
-    --swiper-pagination-bullet-width,
-    var(--swiper-pagination-bullet-size, 80px)
-  );
-  height: var(
-    --swiper-pagination-bullet-height,
-    var(--swiper-pagination-bullet-size, 80px)
-  );
+  width: var(--swiper-pagination-bullet-width, var(--swiper-pagination-bullet-size, 80px));
+  height: var(--swiper-pagination-bullet-height, var(--swiper-pagination-bullet-size, 80px));
   // display: inline-block;
   border-radius: 50%;
   // background: var(--swiper-pagination-bullet-inactive-color, #000);
@@ -111,16 +100,16 @@
 .swiper-pagination-bullet-active {
   position: absolute;
   inset: 0;
-  color: #fff;
-  stroke: #fff;
-  stroke-width: 1px;
+  color: #ff5a5e;
+  stroke: #ff5a5e;
+  stroke-width: 2px;
   fill: none;
   /* Make the start of the animation visible from above. */
   transform: rotate(-90deg);
   /*  */
   stroke-dasharray: 157 157;
   stroke-dashoffset: 157;
-  transition: stroke-dashoffset ease-in-out 5000ms;
+  transition: stroke-dashoffset ease-in-out 8000ms;
 }
 
 .swiper-vertical > .swiper-pagination-bullets,
@@ -145,7 +134,7 @@
 .swiper-horizontal > .swiper-pagination-bullets,
 .swiper-pagination-horizontal.swiper-pagination-bullets {
   .swiper-pagination-bullet {
-    margin: 0; //var(--swiper-pagination-bullet-horizontal-gap, 0px);
+    margin: 0 var(--swiper-pagination-bullet-horizontal-gap, 0px);
   }
   &.swiper-pagination-bullets-dynamic {
     left: 50%;
@@ -156,9 +145,7 @@
     }
   }
 }
-.swiper-horizontal.swiper-rtl
-  > .swiper-pagination-bullets-dynamic
-  .swiper-pagination-bullet {
+.swiper-horizontal.swiper-rtl > .swiper-pagination-bullets-dynamic .swiper-pagination-bullet {
   transition: 200ms transform, 200ms right;
 }
 /* Progress */
@@ -182,8 +169,8 @@
   &.swiper-pagination-horizontal,
   .swiper-vertical > &.swiper-pagination-progressbar-opposite,
   &.swiper-pagination-vertical.swiper-pagination-progressbar-opposite {
-    width: 100%;
-    height: 4px;
+    width: 100%;    
+    height: 4px;    
     left: 0;
     top: 0;
   }
@@ -199,22 +186,4 @@
 }
 .swiper-pagination-lock {
   display: none;
-}
-@media (max-width: 1200px) {
-  .swiper-pagination-fraction,
-  .swiper-pagination-custom,
-  .swiper-horizontal > .swiper-pagination-bullets,
-  .swiper-pagination-bullets.swiper-pagination-horizontal {
-    // 改過
-    // bottom: 10px;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    // width: 100%;
-    display: flex;
-    bottom: -40px;
-    // right: -100px;
-    width: 320px;
-    height: 79px;
-    background: #000;
-  }
 }

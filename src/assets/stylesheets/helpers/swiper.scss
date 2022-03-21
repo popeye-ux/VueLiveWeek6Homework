@@ -170,6 +170,18 @@
     scroll-snap-align: center center;
   }
 }
+@media (max-width: 1200px) {
+  .swiper {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    overflow: hidden;
+    list-style: none;
+    padding: 0;
+    /* Fix of Webkit flickering */
+    z-index: 1;
+  }
+}
 
 
 

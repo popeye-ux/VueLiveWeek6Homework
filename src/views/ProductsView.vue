@@ -1,4 +1,5 @@
 <template>
+<Loading :active="isLoading" :z-index="1060"></Loading>
  <div class="container-fluid mt-3 p-0">
     <div class="headPic-webstore d-flex align-items-center justify-content-center">
       <span class="head-title">Webstore</span>
@@ -6,7 +7,7 @@
   </div>
   <div class="container wrapper mt-7">
     <!-- row 決定內層的欄位數量 -->
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-5">
+    <div class="row row-cols-1 row-cols-sm-2  row-cols-lg-4">
       <!-- 內層不決定寬度 -->
       <div class="col mb-6" v-for="item in products" :key="item.id">
         <div class="card h-100">
@@ -63,7 +64,8 @@ export default {
     return {
       products: [],
       isLoadingItem: '',
-      pagination
+      pagination,
+      isLoading: false
     }
   },
   components: {
@@ -71,12 +73,14 @@ export default {
   },
   methods: {
     getData (page = 1) {
+      this.isLoading = true
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products?page=${page}`
       this.$http.get(url).then((response) => {
         const { products, pagination } = response.data
         this.products = products
-        console.log(this.products)
+        // console.log(this.products)
         this.pagination = pagination
+        this.isLoading = false
       })
     },
     addToCart (id, qty = 1) {
@@ -116,6 +120,7 @@ export default {
     //   this.products = response.data.products
     // })
     this.getData()
+    window.scroll(0, 0)
   }
 }
 </script>

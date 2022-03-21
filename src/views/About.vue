@@ -1,4 +1,5 @@
 <template>
+<Loading :active="isLoading" :z-index="1060"></Loading>
   <div class="container-fluid mt-3 p-0">
     <div class="headPic d-flex align-items-center justify-content-center">
       <span class="head-title">About</span>
@@ -58,3 +59,24 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  data () {
+    return {
+      isLoading: false
+    }
+  },
+  methods: {
+    loading () {
+      this.isLoading = true
+      setTimeout(() => {
+        this.isLoading = false
+      }, 1000)
+    }
+  },
+  mounted () {
+    window.scroll(0, 0)
+    this.loading()
+  }
+}
+</script>

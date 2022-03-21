@@ -239,6 +239,7 @@ export default {
   },
   mounted () {
     this.getCart()
+    window.scroll(0, 0)
   }
 }
 </script>

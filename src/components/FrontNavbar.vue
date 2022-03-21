@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light mt-3" id="nav">
     <div class="container-fluid">
-      <router-link to="/" class="navbar-brand ms-5">
+      <router-link to="/" class="navbar-brand ms-lg-5">
         <svg
           version="1.1"
           id="Layer_1"
@@ -61,7 +61,7 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav" ms-lg-5>
         <ul class="navbar-nav">
           <!-- <li class="nav-item me-5">
             <router-link to="/" class="nav-link">Home</router-link>

@@ -10,6 +10,9 @@ const routes = [
         path: '/',
         name: 'home',
         component: () => import('@/views/HomeView.vue')
+        // meta: {
+        //   title: 'MOMENT'
+        // }
       },
       {
         path: 'about',
@@ -17,30 +20,48 @@ const routes = [
         // route level code-splitting
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
-        component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+        component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
+        meta: {
+          title: '關於 '
+        }
       },
       {
         path: 'products',
-        component: () => import('../views/ProductsView.vue')
+        component: () => import('../views/ProductsView.vue'),
+        meta: {
+          title: '網路商店 | '
+        }
       },
       {
         path: 'product/:id',
-        component: () => import('../views/ProductItem.vue')
+        component: () => import('../views/ProductItem.vue'),
+        meta: {
+          title: '網路商店 | '
+        }
       },
       {
         path: 'cart',
         name: 'cart',
-        component: () => import('../views/CartView.vue')
+        component: () => import('../views/CartView.vue'),
+        meta: {
+          title: '購物車 | '
+        }
       },
       {
         path: 'orderinform',
         name: 'orderinform',
-        component: () => import('../views/OrderInformation.vue')
+        component: () => import('../views/OrderInformation.vue'),
+        meta: {
+          title: '訂購資訊 | '
+        }
       },
       {
         path: 'checkout/:id',
         name: 'checkout',
-        component: () => import('../views/CheckOut.vue')
+        component: () => import('../views/CheckOut.vue'),
+        meta: {
+          title: '確認訂單 | '
+        }
       },
       // {
       //   path: 'checkpayment/:id',
@@ -50,7 +71,10 @@ const routes = [
       {
         path: 'faq',
         name: 'faq',
-        component: () => import('../views/FaqView.vue')
+        component: () => import('../views/FaqView.vue'),
+        meta: {
+          title: '常見問題 | '
+        }
       }
     ]
   },

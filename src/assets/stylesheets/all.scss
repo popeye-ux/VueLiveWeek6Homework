@@ -16,7 +16,7 @@ body {
 }
 .footer {
   margin-top: auto; //利用flex特性，margin-top設auto後會自動計算上面有多少空間而將元素往下推移
-  height: 50px;
+  height: 200px;
 }
 .login {
   color:#7383a3;
@@ -92,26 +92,32 @@ $hover: darken($bg, 10%);
   background-size: cover;
   background-position: center center;
 }
+.home-foot {
+  background-image: url(./assets/img/home-foot.jpg);
+  height: 300px;
+  background-size: cover;
+  background-position: center center;
+} 
 .head-title {
   color: #fff;
   font-size: 4rem;
   font-weight: 900;
   position: relative;
 }
-.head-title:before, .head-title:after {
-  content: "";
-  height: 3px;
-  background: #ffc62d;
-  top: 50%;
-  width: 55%;
-  position: absolute;
-}
-.head-title:before {  
-  left: -70%;
-}
-.head-title:after {  
-  right: -70%;
-}
+// .head-title:before, .head-title:after {
+//   content: "";
+//   height: 3px;
+//   background: #ffc62d;
+//   top: 50%;
+//   width: 55%;
+//   position: absolute;
+// }
+// .head-title:before {  
+//   left: -70%;
+// }
+// .head-title:after {  
+//   right: -70%;
+// }
 // homepage
 .main-bg {
   background-image: url(./assets/img/index_visual.webp);

@@ -1,6 +1,6 @@
 <template>
   <div class="container mt-7">
-    <div class="row row-cols-1 row-cols-sm-3 g-5">
+    <div class="row row-cols-3 row-cols-sm-3">
       <div class="col text-center">
         <div
           class="
@@ -45,7 +45,7 @@
     </div>
   </div>
   <div class="container my-7">
-    <div class="row row-cols-1 row-cols-sm-2 g-7">
+    <div class="row row-cols-1 row-cols-sm-2">
       <div class="col">
         <h3 class="fw-bold">訂購商品</h3>
         <table class="table">
@@ -193,6 +193,7 @@ export default {
   },
   mounted () {
     this.getOrder()
+    window.scroll(0, 0)
   }
 }
 </script>

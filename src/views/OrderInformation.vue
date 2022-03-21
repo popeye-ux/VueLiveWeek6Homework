@@ -1,6 +1,7 @@
 <template>
+<Loading :active="isLoading" :z-index="1060"></Loading>
   <div class="container mt-7">
-    <div class="row row-cols-1 row-cols-sm-3 g-5">
+    <div class="row row-cols-3 row-cols-sm-3">
       <div class="col text-center">
         <div class="check-step check-step-finished d-flex flex-column justify-content-center">
           <i class="bi bi-check2-circle check-step-icon"></i>
@@ -25,8 +26,8 @@
     </div>
   </div>
   <div class="container my-7">
-    <div class="row g-7">
-      <div class="col">
+    <div class="row">
+      <div class="col-12 col-md-6 pe-md-5">
         <h3 class="mb-3 fw-bold">確認訂單內容</h3>
         <table class="table align-middle">
           <thead>
@@ -98,7 +99,7 @@
           </tfoot>
         </table>
       </div>
-      <div class="col justify-content-center">
+      <div class="col-12 col-md-6 ps-md-5 justify-content-center">
         <h3 class="mb-3 fw-bold">填寫訂購資訊</h3>
         <Form ref="form" @submit="submitOrders" v-slot="{ errors }">
           <div class="mb-3">
@@ -208,7 +209,8 @@ export default {
         message: ''
       },
       coupon_code: 'truelove2022',
-      isDiscount: false
+      isDiscount: false,
+      isLoading: false
     }
   },
   watch: {
@@ -228,12 +230,14 @@ export default {
       return phoneNumber.test(value) ? true : '需要正確的電話號碼'
     },
     getCart () {
+      this.isLoading = true
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
       this.$http
         .get(url)
         .then((res) => {
           this.cartData = res.data.data
           // console.log(this.cartData)
+          this.isLoading = false
         })
         .catch((err) => {
           console.log(err.message)
@@ -288,6 +292,7 @@ export default {
   },
   mounted () {
     this.getCart()
+    window.scroll(0, 0)
   }
 }
 </script>
