@@ -36,7 +36,6 @@
                 <img
                   :src="item.imagesUrl[2]"
                   alt="item.title"
-                  id="“myCircle”"
                 />
               </router-link>
             </swiper-slide>
@@ -146,10 +145,6 @@ import { Pagination, Autoplay } from 'swiper'
 // import 'swiper/swiper.scss'
 // import 'swiper/modules/pagination/pagination.min.css'
 export default {
-  // name: 'Home',
-  // components: {
-  //   HelloWorld
-  // },
   data () {
     return {
       products: [],
@@ -158,19 +153,22 @@ export default {
       email: '',
       pagination: {
         clickable: true,
+        type: 'bullets',
         renderBullet: function (index, className) {
-          // return '<span class="' + className + '">' + (index + 1) + '</span>'
-          return `<div>
-        <div class="circle ">
-          <svg viewBox="0 0 60 60" class="${className}">
-            <circle cx="30" cy="30" r="15"/>
-          </svg>
-          <svg viewBox="0 0 60 60" class="circle-back">
-            <circle cx="30" cy="30" r="15"/>
-          </svg>
-          <span>${index + 1}</span>
-        </div>
-      </div>`
+          return `<span class=${className}><span class="number">${index + 1}</span><svg viewBox="0 0 60 60" class="circle-front">
+          //       <circle cx="30" cy="30" r="15"/>
+          //     </svg></span>`
+          // return `
+          //   <div class="circle ">
+          //   <svg viewBox="0 0 60 60" class="circle-back">
+          //       <circle cx="30" cy="30" r="15"/>
+          //     </svg>
+          //     <svg viewBox="0 0 60 60" class="${className}">
+          //       <circle cx="30" cy="30" r="15"/>
+          //     </svg>
+          //     <span >${index + 1}</span>
+          //   </div>
+          // `
         }
       }
     }
@@ -220,7 +218,7 @@ export default {
 @import "@/assets/stylesheets/helpers/marquee.scss";
 
 :root {
-  --color: #ff5a5e;
+  --color: #fff;
   --inactive-color: rgb(211, 211, 211);
   --stroke-width: 1;
 }
@@ -273,18 +271,6 @@ export default {
   stroke-dashoffset: 0;
   animation: spin 3s linear;
   animation-fill-mode: forwards;
-}
-
-.dot {
-  display: block;
-  width: 8px;
-  height: 8px;
-  background: var(--inactive-color);
-  border-radius: 8px;
-}
-
-.circle.active .dot {
-  background: var(--color);
 }
 
 @keyframes spin {
