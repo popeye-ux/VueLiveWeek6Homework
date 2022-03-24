@@ -9,10 +9,10 @@ const routes = [
       {
         path: '/',
         name: 'home',
-        component: () => import('@/views/HomeView.vue')
-        // meta: {
-        //   title: 'MOMENT'
-        // }
+        component: () => import('@/views/HomeView.vue'),
+        meta: {
+          title: '一刻時光屋'
+        }
       },
       {
         path: 'about',

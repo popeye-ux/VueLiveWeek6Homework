@@ -7,9 +7,10 @@
   </div>
   <div class="container wrapper mt-7">
     <!-- row 決定內層的欄位數量 -->
-    <div class="row row-cols-1 row-cols-sm-2  row-cols-lg-4">
+    <div class="row row-cols-1 row-cols-sm-2  row-cols-lg-4 mx-1 mx-lg-4">
       <!-- 內層不決定寬度 -->
-      <div class="col mb-6" v-for="item in products" :key="item.id">
+      <div class="col mb-6" v-for="item in products" :key="item.id" data-aos="fade-up" data-aos-easing="linear"
+     data-aos-duration="1500">
         <div class="card h-100">
           <div class="card-body">
             <img
@@ -59,6 +60,7 @@
 <script>
 import emitter from '../libs/emitter'
 import pagination from '@/components/PaginationComp.vue'
+import AOS from 'aos'
 export default {
   data () {
     return {
@@ -112,6 +114,8 @@ export default {
     showAlert (message) {
       // Use sweetalert2
       this.$swal(message)
+      window.scroll(0, 0)
+      AOS.init()
     }
   },
   mounted () {
@@ -121,6 +125,7 @@ export default {
     // })
     this.getData()
     window.scroll(0, 0)
+    AOS.init()
   }
 }
 </script>

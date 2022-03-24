@@ -63,3 +63,14 @@ $line-height-abs: -100px;
       background-position: 0 $line-height;
     }
   }
+  @media (max-width: 768px) {
+    .line-title {
+      left: 10px;
+      bottom: 0px;
+      font-size: 18px;
+      font-weight: 500;
+    }
+    .c-scrolldown {
+      bottom: 0px;
+    }
+  }

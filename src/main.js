@@ -21,6 +21,8 @@ import { localize, setLocale } from '@vee-validate/i18n'
 // 匯入繁體中文語系檔案
 import zhTW from '@vee-validate/i18n/dist/locale/zh_TW.json'
 import { currency } from './methods/filters'
+// aos
+import 'aos/dist/aos.css'
 
 import App from './App.vue'
 import router from './router'
@@ -45,7 +47,11 @@ app.use(router)
 app.use(VueAxios, axios)
 app.component('Loading', Loading)
 // Sweet alert2 提示框
-app.use(VueSweetalert2)
+const options = {
+  confirmButtonColor: '#141414',
+  cancelButtonColor: '##41b882'
+}
+app.use(VueSweetalert2, options)
 // 文章編輯介面
 app.use(CKEditor)
 // 註冊 vee-validate 三個全域元件

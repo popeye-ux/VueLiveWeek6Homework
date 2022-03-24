@@ -4,7 +4,7 @@
       <div class="container">
         <div class="row d-flex justify-content-center mx-auto text-center">
           <div>
-            <p class="text-success mt-5 mb-1 pb-1">本網站僅供個人作品使用，不提供商業用途 |
+            <p class="text-success mt-5 mb-1 pb-1">本網站僅供個人作品使用，不提供商業用途 <span class="d-none d-md-inline">|</span>
               <span class="d-none d-md-inline-block"><router-link to="/admin" class=" login" target="_blank">登入管理後台</router-link></span>
             </p>
         <p class="text-success mt-1 fs-6">MOMENT © 2022 COPYRIGHT</p>

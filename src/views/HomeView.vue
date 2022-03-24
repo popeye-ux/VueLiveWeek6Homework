@@ -1,15 +1,15 @@
 <template>
   <div class="container-fluid marqueeContainer">
-    <div class="marquee running js-marquee">
+    <div class="marquee running js-marquee d-none d-sm-block">
       <div class="marquee-inner">
         <span
-          >The Moment is forever. The Moment is forever The Moment is forever.
+          >The Moment is forever. The Moment is forever. The Moment is forever.
         </span>
       </div>
     </div>
-    <div class="container mb-5 mt-0">
+    <div class="container mb-5 px-0">
       <div class="row gx-0">
-        <div class="col col-sm-4 col-lg-4 .d-none .d-sm-block">
+        <div class="col col-sm-3 col-lg-4 .d-none .d-sm-block">
           <div class="l-section-top .d-none .d-sm-block">
             <div class="c-scrolldown">
               <div class="Fade-line .d-none .d-sm-block"></div>
@@ -19,7 +19,8 @@
             </div>
           </div>
         </div>
-        <div class="col col-sm-6 col-lg-4 main-bg">
+        <div class="col col-sm-9 col-lg-5 main-bg" data-aos="fade-down" data-aos-easing="linear"
+     data-aos-duration="1500">
           <swiper
             :slides-per-view="1"
             :space-between="1000"
@@ -41,16 +42,18 @@
             </swiper-slide>
           </swiper>
         </div>
-        <div class="col col-sm-2 col-lg-4 .d-none .d-sm-block"></div>
+        <div class="col  col-lg-3 .d-none .d-md-block"></div>
       </div>
     </div>
   </div>
   <div class="container mt-7 mb-7">
     <div class="row">
-      <div class="col-12 col-lg-6 mb-lg-7 mb-3">
-        <img class="img-fluid" src="@/assets/img/home-img.jpg" alt="牽手圖" />
+      <div class="col-12 col-lg-6 mb-lg-7 px-4 mb-3" data-aos="fade-up" data-aos-easing="linear"
+     data-aos-duration="1500">
+        <img class="img-fluid" src="@/assets/img/home-img.jpg" alt="牽手圖"/>
       </div>
-      <div class="col-12 col-lg-6 mb-lg-7 mb-7 ps-lg-5">
+      <div class="col-12 col-lg-6 mb-lg-7 px-4 mb-7 ps-lg-5" data-aos="fade-left" data-aos-easing="linear"
+     data-aos-duration="1500">
         <small>CONCEPT</small>
         <h2 class="mt-3 mb-lg-7 mb-5">在乎您對時光的珍惜</h2>
         <p>世界上最快而又最慢、最長而又最短、最平凡而又最珍貴的就是時間！</p>
@@ -62,7 +65,8 @@
           ><div class="more-circle">more</div></router-link
         >
       </div>
-      <div class="col-12 col-lg-6 mb-7 mb-lg-7 pe-lg-5 order-2 order-lg-1">
+      <div class="col-12 col-lg-6 mb-7 mb-lg-7 pe-lg-5 px-4 order-2 order-lg-1" data-aos="fade-right" data-aos-easing="linear"
+     data-aos-duration="1500">
         <small>Excellent Art</small>
         <h2 class="mt-3 mb-lg-7 mb-5">時光工匠的競技場</h2>
         <p>
@@ -74,21 +78,24 @@
           ><div class="more-circle"><span>more</span></div></router-link
         >
       </div>
-      <div class="col-12 col-lg-6 mb-lg-7 mb-3 order-1 order-lg-2">
+      <div class="col-12 col-lg-6 mb-lg-7 mb-3 px-4 order-1 order-lg-2" data-aos="fade-up" data-aos-easing="linear"
+     data-aos-duration="1500">
         <img
           class="img-fluid"
           src="@/assets/img/home-img2.jpg"
-          alt="手表戒指圖"
+          alt="錶面圖"
         />
       </div>
-      <div class="col-12 col-lg-6 mb-lg-7 mb-3 order-3">
+      <div class="col-12 col-lg-6 mb-lg-7 mb-3 px-4 order-3" data-aos="fade-up" data-aos-easing="linear"
+     data-aos-duration="1500">
         <img
           class="img-fluid"
           src="@/assets/img/home-img3.jpg"
-          alt="手表戒指圖"
+          alt="手錶圖"
         />
       </div>
-      <div class="col-12 col-lg-6 mb-lg-7 mb-3 ps-lg-5 order-4">
+      <div class="col-12 col-lg-6 mb-lg-7 mb-3 px-4 ps-lg-5 order-4" data-aos="fade-left" data-aos-easing="linear"
+     data-aos-duration="1500">
         <small>Delivery</small>
         <h2 class="mt-3 mb-lg-7 mb-5">時光不待人</h2>
         <p>
@@ -142,6 +149,7 @@
 <script>
 import { Swiper, SwiperSlide } from 'swiper/vue/swiper-vue'
 import { Pagination, Autoplay } from 'swiper'
+import AOS from 'aos'
 // import 'swiper/swiper.scss'
 // import 'swiper/modules/pagination/pagination.min.css'
 export default {
@@ -156,8 +164,8 @@ export default {
         type: 'bullets',
         renderBullet: function (index, className) {
           return `<span class=${className}><span class="number">${index + 1}</span><svg viewBox="0 0 60 60" class="circle-front">
-          //       <circle cx="30" cy="30" r="15"/>
-          //     </svg></span>`
+               <circle cx="30" cy="30" r="15"/>
+              </svg></span>`
           // return `
           //   <div class="circle ">
           //   <svg viewBox="0 0 60 60" class="circle-back">
@@ -207,6 +215,7 @@ export default {
     console.log(process.env.VUE_APP_API, process.env.VUE_APP_PATH)
     this.getData()
     window.scroll(0, 0)
+    AOS.init()
   }
 }
 </script>
